@@ -280,7 +280,8 @@ debugging("<pre>the user that should have been created or updated is:\r\n".print
 
         $drupal_users = $apiObj->Index('user',"?vid={$vid},page={$page},pagesize={$pagesize}");
         if (is_null($drupal_users) || empty($drupal_users)) {
-            die("ERROR: Problems trying to get index of users!\n");
+            print("There are no new updates to the user list.\n");
+            return;
         }
         // sync users in Drupal with users in Moodle (adding users if needed)
         print_string('auth_drupalservicesuserstoupdate', 'auth_drupalservices', count($drupal_users));
